@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Deposito">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="numeroCuenta" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="cantidad" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remitente" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="origen" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DepositoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DepositoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Transferir">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="numeroCuentaOrigen" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="numeroCuentaDestino" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="monto" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remitente" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Origen" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TransferirResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TransferirResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetirarDinero">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="numeroCuenta" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="monto" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetirarDineroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RetirarDineroResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MostrarTransacciones">
+        <s:complexType />
+      </s:element>
+      <s:element name="MostrarTransaccionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MostrarTransaccionesResult" type="tns:ArrayOfTransaccion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTransaccion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Transaccion" nillable="true" type="tns:Transaccion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Transaccion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaHora" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CuentaId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cantidad" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroTransaccion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertarTurnoConBilletes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="empleado_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="hora_inicio" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion1" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion5" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion10" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion25" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion50" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion100" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion200" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion500" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion1000" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion2000" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remitente" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Origen" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarTurnoConBilletesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertarTurnoConBilletesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearPrestamo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cliente_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha_inicio" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha_fin" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dia_corte_pago" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="sueldo_restante" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="tasa_interes" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearPrestamoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CrearPrestamoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TerminarTurno">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="turno_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="hora_fin" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion1" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion5" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion10" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion25" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion50" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion100" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion200" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion500" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion1000" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="denominacion2000" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remitente" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Origen" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TerminarTurnoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TerminarTurnoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PagoPrestamo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="prestamo_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="monto_pago" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="remitente" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="origen" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PagoPrestamoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PagoPrestamoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DepositoSoapIn">
+    <wsdl:part name="parameters" element="tns:Deposito" />
+  </wsdl:message>
+  <wsdl:message name="DepositoSoapOut">
+    <wsdl:part name="parameters" element="tns:DepositoResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransferirSoapIn">
+    <wsdl:part name="parameters" element="tns:Transferir" />
+  </wsdl:message>
+  <wsdl:message name="TransferirSoapOut">
+    <wsdl:part name="parameters" element="tns:TransferirResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetirarDineroSoapIn">
+    <wsdl:part name="parameters" element="tns:RetirarDinero" />
+  </wsdl:message>
+  <wsdl:message name="RetirarDineroSoapOut">
+    <wsdl:part name="parameters" element="tns:RetirarDineroResponse" />
+  </wsdl:message>
+  <wsdl:message name="MostrarTransaccionesSoapIn">
+    <wsdl:part name="parameters" element="tns:MostrarTransacciones" />
+  </wsdl:message>
+  <wsdl:message name="MostrarTransaccionesSoapOut">
+    <wsdl:part name="parameters" element="tns:MostrarTransaccionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarTurnoConBilletesSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarTurnoConBilletes" />
+  </wsdl:message>
+  <wsdl:message name="InsertarTurnoConBilletesSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarTurnoConBilletesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearPrestamoSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearPrestamo" />
+  </wsdl:message>
+  <wsdl:message name="CrearPrestamoSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearPrestamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="TerminarTurnoSoapIn">
+    <wsdl:part name="parameters" element="tns:TerminarTurno" />
+  </wsdl:message>
+  <wsdl:message name="TerminarTurnoSoapOut">
+    <wsdl:part name="parameters" element="tns:TerminarTurnoResponse" />
+  </wsdl:message>
+  <wsdl:message name="PagoPrestamoSoapIn">
+    <wsdl:part name="parameters" element="tns:PagoPrestamo" />
+  </wsdl:message>
+  <wsdl:message name="PagoPrestamoSoapOut">
+    <wsdl:part name="parameters" element="tns:PagoPrestamoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TransferenciasSoap">
+    <wsdl:operation name="Deposito">
+      <wsdl:input message="tns:DepositoSoapIn" />
+      <wsdl:output message="tns:DepositoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Transferir">
+      <wsdl:input message="tns:TransferirSoapIn" />
+      <wsdl:output message="tns:TransferirSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetirarDinero">
+      <wsdl:input message="tns:RetirarDineroSoapIn" />
+      <wsdl:output message="tns:RetirarDineroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MostrarTransacciones">
+      <wsdl:input message="tns:MostrarTransaccionesSoapIn" />
+      <wsdl:output message="tns:MostrarTransaccionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarTurnoConBilletes">
+      <wsdl:input message="tns:InsertarTurnoConBilletesSoapIn" />
+      <wsdl:output message="tns:InsertarTurnoConBilletesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearPrestamo">
+      <wsdl:input message="tns:CrearPrestamoSoapIn" />
+      <wsdl:output message="tns:CrearPrestamoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TerminarTurno">
+      <wsdl:input message="tns:TerminarTurnoSoapIn" />
+      <wsdl:output message="tns:TerminarTurnoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PagoPrestamo">
+      <wsdl:input message="tns:PagoPrestamoSoapIn" />
+      <wsdl:output message="tns:PagoPrestamoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TransferenciasSoap" type="tns:TransferenciasSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Deposito">
+      <soap:operation soapAction="http://tempuri.org/Deposito" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Transferir">
+      <soap:operation soapAction="http://tempuri.org/Transferir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetirarDinero">
+      <soap:operation soapAction="http://tempuri.org/RetirarDinero" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarTransacciones">
+      <soap:operation soapAction="http://tempuri.org/MostrarTransacciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarTurnoConBilletes">
+      <soap:operation soapAction="http://tempuri.org/InsertarTurnoConBilletes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearPrestamo">
+      <soap:operation soapAction="http://tempuri.org/CrearPrestamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TerminarTurno">
+      <soap:operation soapAction="http://tempuri.org/TerminarTurno" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PagoPrestamo">
+      <soap:operation soapAction="http://tempuri.org/PagoPrestamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TransferenciasSoap12" type="tns:TransferenciasSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Deposito">
+      <soap12:operation soapAction="http://tempuri.org/Deposito" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Transferir">
+      <soap12:operation soapAction="http://tempuri.org/Transferir" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetirarDinero">
+      <soap12:operation soapAction="http://tempuri.org/RetirarDinero" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarTransacciones">
+      <soap12:operation soapAction="http://tempuri.org/MostrarTransacciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarTurnoConBilletes">
+      <soap12:operation soapAction="http://tempuri.org/InsertarTurnoConBilletes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearPrestamo">
+      <soap12:operation soapAction="http://tempuri.org/CrearPrestamo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TerminarTurno">
+      <soap12:operation soapAction="http://tempuri.org/TerminarTurno" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PagoPrestamo">
+      <soap12:operation soapAction="http://tempuri.org/PagoPrestamo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Transferencias">
+    <wsdl:port name="TransferenciasSoap" binding="tns:TransferenciasSoap">
+      <soap:address location="https://corebanco20230422004045.azurewebsites.net/Transferencias.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TransferenciasSoap12" binding="tns:TransferenciasSoap12">
+      <soap12:address location="https://corebanco20230422004045.azurewebsites.net/Transferencias.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

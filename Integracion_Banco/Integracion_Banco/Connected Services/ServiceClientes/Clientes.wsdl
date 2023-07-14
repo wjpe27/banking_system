@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="CrearClientes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dir" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remitente" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Origen" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CrearClientesResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remitente" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Origen" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminarClienteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MostrarCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remitente" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Origen" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MostrarClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MostrarClienteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearCuentaCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cliente_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="tipo_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="saldo" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearCuentaClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CrearCuentaClienteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MostrarCuentasCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MostrarCuentasClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MostrarCuentasClienteResult" type="tns:ArrayOfCuenta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCuenta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cuenta" nillable="true" type="tns:Cuenta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cuenta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmpleadoId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Saldo" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroCuenta" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CrearPrestamo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cliente_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha_inicio" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="cantidad" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="tasa_interes" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="plazo_meses" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remitente" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Origen" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearPrestamoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CrearPrestamoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RevisarContraseña">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contraseña" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remitente" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="origen" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RevisarContraseñaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RevisarContraseñaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CrearClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearClientes" />
+  </wsdl:message>
+  <wsdl:message name="CrearClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarCliente" />
+  </wsdl:message>
+  <wsdl:message name="EliminarClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="MostrarClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:MostrarCliente" />
+  </wsdl:message>
+  <wsdl:message name="MostrarClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:MostrarClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearCuentaClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearCuentaCliente" />
+  </wsdl:message>
+  <wsdl:message name="CrearCuentaClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearCuentaClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="MostrarCuentasClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:MostrarCuentasCliente" />
+  </wsdl:message>
+  <wsdl:message name="MostrarCuentasClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:MostrarCuentasClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearPrestamoSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearPrestamo" />
+  </wsdl:message>
+  <wsdl:message name="CrearPrestamoSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearPrestamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RevisarContraseñaSoapIn">
+    <wsdl:part name="parameters" element="tns:RevisarContraseña" />
+  </wsdl:message>
+  <wsdl:message name="RevisarContraseñaSoapOut">
+    <wsdl:part name="parameters" element="tns:RevisarContraseñaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ClientesSoap">
+    <wsdl:operation name="CrearClientes">
+      <wsdl:input message="tns:CrearClientesSoapIn" />
+      <wsdl:output message="tns:CrearClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCliente">
+      <wsdl:input message="tns:EliminarClienteSoapIn" />
+      <wsdl:output message="tns:EliminarClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MostrarCliente">
+      <wsdl:input message="tns:MostrarClienteSoapIn" />
+      <wsdl:output message="tns:MostrarClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearCuentaCliente">
+      <wsdl:input message="tns:CrearCuentaClienteSoapIn" />
+      <wsdl:output message="tns:CrearCuentaClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MostrarCuentasCliente">
+      <wsdl:input message="tns:MostrarCuentasClienteSoapIn" />
+      <wsdl:output message="tns:MostrarCuentasClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearPrestamo">
+      <wsdl:input message="tns:CrearPrestamoSoapIn" />
+      <wsdl:output message="tns:CrearPrestamoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RevisarContraseña">
+      <wsdl:input message="tns:RevisarContraseñaSoapIn" />
+      <wsdl:output message="tns:RevisarContraseñaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClientesSoap" type="tns:ClientesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CrearClientes">
+      <soap:operation soapAction="http://tempuri.org/CrearClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCliente">
+      <soap:operation soapAction="http://tempuri.org/EliminarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarCliente">
+      <soap:operation soapAction="http://tempuri.org/MostrarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearCuentaCliente">
+      <soap:operation soapAction="http://tempuri.org/CrearCuentaCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarCuentasCliente">
+      <soap:operation soapAction="http://tempuri.org/MostrarCuentasCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearPrestamo">
+      <soap:operation soapAction="http://tempuri.org/CrearPrestamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RevisarContraseña">
+      <soap:operation soapAction="http://tempuri.org/RevisarContraseña" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ClientesSoap12" type="tns:ClientesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CrearClientes">
+      <soap12:operation soapAction="http://tempuri.org/CrearClientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCliente">
+      <soap12:operation soapAction="http://tempuri.org/EliminarCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarCliente">
+      <soap12:operation soapAction="http://tempuri.org/MostrarCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearCuentaCliente">
+      <soap12:operation soapAction="http://tempuri.org/CrearCuentaCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarCuentasCliente">
+      <soap12:operation soapAction="http://tempuri.org/MostrarCuentasCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearPrestamo">
+      <soap12:operation soapAction="http://tempuri.org/CrearPrestamo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RevisarContraseña">
+      <soap12:operation soapAction="http://tempuri.org/RevisarContraseña" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Clientes">
+    <wsdl:port name="ClientesSoap" binding="tns:ClientesSoap">
+      <soap:address location="https://localhost:44369/ConexionCaja/Clientes.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ClientesSoap12" binding="tns:ClientesSoap12">
+      <soap12:address location="https://localhost:44369/ConexionCaja/Clientes.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

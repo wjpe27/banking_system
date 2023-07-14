@@ -1,0 +1,8 @@
+C:\Users\Francisco\Downloads\CajaBanco\PruebasConex\bin\Debug\PruebasConex.exe.config
+C:\Users\Francisco\Downloads\CajaBanco\PruebasConex\bin\Debug\PruebasConex.exe
+C:\Users\Francisco\Downloads\CajaBanco\PruebasConex\bin\Debug\PruebasConex.pdb
+C:\Users\Francisco\Downloads\CajaBanco\PruebasConex\obj\Debug\PruebasConex.csproj.AssemblyReference.cache
+C:\Users\Francisco\Downloads\CajaBanco\PruebasConex\obj\Debug\PruebasConex.csproj.SuggestedBindingRedirects.cache
+C:\Users\Francisco\Downloads\CajaBanco\PruebasConex\obj\Debug\PruebasConex.csproj.CoreCompileInputs.cache
+C:\Users\Francisco\Downloads\CajaBanco\PruebasConex\obj\Debug\PruebasConex.exe
+C:\Users\Francisco\Downloads\CajaBanco\PruebasConex\obj\Debug\PruebasConex.pdb
